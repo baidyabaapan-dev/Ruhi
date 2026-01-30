@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>Ruhi ke liye</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #fff1f5, #f3f7ff);
+      color: #333;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .box {
+      max-width: 440px;
+      padding: 28px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      position: relative;
+      z-index: 2;
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .box.vanish {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .soft {
+      color: #d6336c;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px;
+      border-radius: 14px;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .yes {
+      background: #ffccd5;
+      color: #000;
+    }
+
+    .no {
+      background: transparent;
+      color: #666;
+      border: 1px solid #ccc;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #777;
+      text-align: center;
+    }
+
+    .rose {
+      position: fixed;
+      top: -20px;
+      font-size: 22px;
+      animation: fall linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box" id="card">
+    <h1>हाय रुही 🌸</h1>
+
+    <p>
+      कभी-कभी कुछ लोग<br>
+      बिना कोशिश किए ही<br>
+      अपने लगने लगते हैं।
+    </p>
+
+    <p>
+      तुमसे बात करके ऐसा लगता है<br>
+      जैसे दिन थोड़ा आसान हो गया हो,<br>
+      और मन थोड़ा हल्का।
+    </p>
+
+    <p class="soft">
+      ये शब्द किसी वादे के नहीं हैं,<br>
+      बस एक सच्चे एहसास के हैं।
+    </p>
+
+    <p>
+      मैं दोस्ती को नाम देने नहीं,<br>
+      उसे निभाने की सोच के साथ पूछ रहा हूँ —<br>
+      क्या तुम मेरी बेस्ट फ्रेंड बनना चाहोगी?<br>
+      बिना जल्दबाज़ी, बिना किसी दबाव के।
+    </p>
+
+    <div class="buttons">
+      <button class="yes" onclick="roseRain()">हाँ, क्यों नहीं 🌹</button>
+      <button class="no" onclick="vanishAll()">अभी नहीं</button>
+    </div>
+
+    <div class="note">
+      जवाब से ज़्यादा ज़रूरी तुम्हारा सुकून है 🤍
+    </div>
+  </div>
+
+  <script>
+    function roseRain() {
+      for (let i = 0; i < 35; i++) {
+        const rose = document.createElement("div");
+        rose.className = "rose";
+        rose.innerText = "🌹";
+        rose.style.left = Math.random() * 100 + "vw";
+        rose.style.animationDuration = (2 + Math.random() * 3) + "s";
+        rose.style.fontSize = (18 + Math.random() * 20) + "px";
+        document.body.appendChild(rose);
+
+        setTimeout(() => {
+          rose.remove();
+        }, 5000);
+      }
+    }
+
+    function vanishAll() {
+      const card = document.getElementById("card");
+      card.classList.add("vanish");
+
+      setTimeout(() => {
+        card.style.display = "none";
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
